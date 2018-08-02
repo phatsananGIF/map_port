@@ -25,9 +25,9 @@
 
 
   <!-- datatables -->
-  <link href="<?=base_url()?>asset/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-  <script src="<?=base_url()?>asset/vendor/datatables/jquery.dataTables.js"></script>
-  <script src="<?=base_url()?>asset/vendor/datatables/dataTables.bootstrap4.js"></script>
+  <link href="<?=base_url()?>asset/vendor/datatablesAd/dataTables.bootstrap4.css" rel="stylesheet">
+  <script src="<?=base_url()?>asset/vendor/datatablesAd/jquery.dataTables.js"></script>
+  <script src="<?=base_url()?>asset/vendor/datatablesAd/dataTables.bootstrap4.js"></script>
 
 
   <!-- Include Required Prerequisites -->

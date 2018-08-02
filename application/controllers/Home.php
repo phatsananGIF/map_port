@@ -35,9 +35,8 @@ class Home extends CI_Controller {
 
 
     public function getlist(){
-        
-        if($this->input->post()){
             $server_ip = $this->input->post("server_ip");
+            
             $list=[];
             $arrlist=[];
             $arrdata=[];
@@ -66,13 +65,16 @@ class Home extends CI_Controller {
                 $arrlist[] = $list;
             };
 
+        
+        if(count($arrlist) == 0){
+            redirect("home","refresh");
+            exit();
+        }else{
             $arrdata['data']=$arrlist;
             $arrdata['serverIp']=$server_ip;
             echo json_encode( $arrdata);
-
-        }//if-post
-        redirect("home","refresh");
-        exit();
+        }
+        
         
     }//f.getlist
 

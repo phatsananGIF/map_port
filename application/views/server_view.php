@@ -102,13 +102,14 @@
 <script type="text/javascript">
 
 function listserver(server_ip){
-
+    console.log(server_ip);
     var fnadd = "popup_addnew('"+server_ip+"')";
     var btaddnew = '<a href="#" onclick="'+fnadd+'" ><i class="fa fa-plus"></i></a >';
 
   $('#tb-showlist').DataTable().clear().destroy();
 
     dataI = {"server_ip":server_ip};
+    console.log(dataI);
     $.ajax({
         type:"POST",
         url:"<?php echo base_url(); ?>home/getlist",
@@ -120,7 +121,7 @@ function listserver(server_ip){
           showPleaseWait();
         },
         success:function(result){
-
+            console.log(result);
             $("span[servercount = '"+server_ip+"']").html(result.data.length);
             $("#ipserver_title").html(server_ip);
             $("#btaddnew").html(btaddnew);

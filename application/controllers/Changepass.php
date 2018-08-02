@@ -39,9 +39,9 @@ class Changepass extends CI_Controller {
 
             }else{
 
-                $this->db->query(" UPDATE user_login set password=PASSWORD('".$this->input->post('changpass[new]')."') , dtupdate=now() WHERE user_name ='".$this->session->userdata('user_name')."' and disable='0000-00-00 00:00:00' ");
+                $this->db->query(" UPDATE user_login set password=PASSWORD('".$this->input->post('changpass[new]')."') , dtupdate=now() WHERE user_name ='".$this->session->userdata('userlogin')."' and disable='0000-00-00 00:00:00' ");
                 
-                $this->session->set_userdata('password',$this->input->post("changpass[new]"));
+                $this->session->set_userdata('passwordlogin',$this->input->post("changpass[new]"));
 
                 redirect("","refresh");
                 exit();
@@ -61,7 +61,7 @@ class Changepass extends CI_Controller {
 
     public function Opass_check($str){
         
-        $rspass = $this->db->query("SELECT * FROM user_login WHERE user_name = '".$this->session->userdata('user_name')."' AND password = password('".$str."') AND disable = '0000-00-00 00:00:00' ");
+        $rspass = $this->db->query("SELECT * FROM user_login WHERE user_name = '".$this->session->userdata('userlogin')."' AND password = password('".$str."') AND disable = '0000-00-00 00:00:00' ");
         
 
         if (($str != "") && ($rspass->num_rows() == 0)){

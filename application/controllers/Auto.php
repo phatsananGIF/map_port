@@ -5,7 +5,6 @@ class Auto extends CI_Controller {
         parent::__construct();
         //Load radius database
         $this->radius_db = $this->load->database('radius_db', TRUE);//เรียกใช้งาน radius ดาต้าเบส
-        $this->load->library('encrypt');//เข้ารหัส
     }
 
     public function index(){
@@ -15,12 +14,12 @@ class Auto extends CI_Controller {
         $this->session->unset_userdata('web');
 
         $code = $_GET['code'];
-        $code = str_replace(" ", "+", $code);
 
+        $code = base64_decode($code);
         $num = substr($code,0,1);
         $code = substr($code,1);
         $code = substr_replace($code, '', $num ,1);
-        $user = $this->encrypt->decode($code);
+        $user = base64_decode($code);
 
         $rslogin = $this->radius_db->query("SELECT * FROM user_login WHERE user_name = '$user' AND disable = '' ");
         $rslogin = $rslogin->row_array();
