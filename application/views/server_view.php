@@ -234,7 +234,7 @@ function popup_edit(id){
             
             var dataresult = "";
             $.each( result.listportremote, function(i,data) {
-                dataresult += "<div class='col-md-3'>"+data.remoteIp+" : "+data.remotePort+"</div>";
+                dataresult += "<div class='col-md-2'>"+data.remotePort+"</div>";
             });
             document.getElementById("detail").innerHTML = dataresult;
             

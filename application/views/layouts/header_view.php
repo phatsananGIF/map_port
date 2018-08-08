@@ -76,7 +76,7 @@
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="System Reload">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="" onClick="window.location.reload()">
             <i class="fa fa-fw fa-refresh"></i>
             <span class="nav-link-text">System Reload</span>
           </a>
