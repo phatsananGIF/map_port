@@ -1,5 +1,40 @@
-203.150.226.21 457 203.150.226.21 3
-203.150.226.21 5 101.150.226.21 3
-203.150.226.21 73 1.1.2.2 3
-203.150.226.21 73 1.1.2.2 3
-203.150.226.21 73 1.1.2.2 3
+SELECT * ,(sum(sensor_value) / 4) AS sum_value ,
+                    from_unixtime((unix_timestamp(`sensor_dt`) - (unix_timestamp(`sensor_dt`) % 10800))) AS `dt`
+                    from `ss_sensor` where siteid = 'PPN01'  and sensor_type = 'rq'and location='us' and 
+                    from_unixtime((unix_timestamp(`sensor_dt`) - (unix_timestamp(`sensor_dt`) % 10800))) between  '2018-04-26 06:00:00' and '2018-04-27 06:00:00' 
+                    group by (unix_timestamp(`sensor_dt`) DIV 10800),`siteid`,`location`,`sensor_type`  ORDER BY `dt` asc
+					
+					
+					
+					
+					
+					
+					SELECT * ,(sum(sensor_value) / 4) AS sum_value ,
+                    from_unixtime((unix_timestamp(`sensor_dt`) - (unix_timestamp(`sensor_dt`) % 10800))) AS `dt`
+                    from `ss_sensor` where siteid = 'PPN01'  and sensor_type = 'rq'and location='us' 
+                    and sensor_dt >= '2018-04-26 06:00:00' and sensor_dt <= '2018-04-27 06:00:00'
+                    group by (unix_timestamp(`sensor_dt`) DIV 10800),`siteid`,`location`,`sensor_type`  
+                  
+                    ORDER BY `dt` asc
+					
+					
+					
+					
+					
+					SELECT * ,(sum(sensor_value) / 4) AS sum_value ,
+                    from_unixtime((unix_timestamp(`sensor_dt`) - (unix_timestamp(`sensor_dt`) % 10800))) AS `dt`
+                    from `ss_sensor` where siteid = 'PPN01'  and sensor_type = 'rq'and location='us' 
+                    and sensor_dt >= '2015-04-26 06:00:00' and sensor_dt <= '2015-04-27 06:00:00'
+                    group by (unix_timestamp(`sensor_dt`) DIV 10800),`siteid`,`location`,`sensor_type`  
+                  
+                    ORDER BY `dt` asc
+					
+					
+					
+					select * from (
+SELECT * ,   (sum(sensor_value) / 4) AS sum_value ,
+                    from_unixtime((unix_timestamp(`sensor_dt`) - (unix_timestamp(`sensor_dt`) % 10800))) AS `dt`
+                    from `ss_sensor` where siteid = 'PPN01'  and sensor_type = 'rq'and location='us' 
+                    and sensor_dt >= '2015-07-18 06:00:00' and sensor_dt <= '2015-07-19 06:00:00'
+                    group by (unix_timestamp(`sensor_dt`) DIV 10800),`siteid`,`location`,`sensor_type` 
+                    ORDER BY `dt` asc) vv where  vv.dt>= '2015-07-18 06:00:00' and dt<= '2015-07-19 06:00:00'
